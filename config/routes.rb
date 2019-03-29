@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'signup#index'
   post '/signup', to: 'signup#create'
+  get '/signin', to: 'signin#index'
   resources :signup, :posts
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'posts#index'
+  root 'signin#index'
 end

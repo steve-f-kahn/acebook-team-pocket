@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Signup", type: :feature do
   scenario "Can sign up" do
-    visit "/signup"
+    visit '/signup'
     fill_in 'signup[username]', with: "Foo"
     fill_in 'signup[password]', with: "Bar"
     fill_in 'signup[email]', with: "Foo@Bar.com"
