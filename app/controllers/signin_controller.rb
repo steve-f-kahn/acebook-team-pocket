@@ -1,4 +1,4 @@
-class SigninController < AplicationController
+class SigninController < ApplicationController
 
-  
+
 end
