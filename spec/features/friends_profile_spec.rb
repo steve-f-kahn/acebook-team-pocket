@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "see friends profile page", type: :feature do
 
-  scenario "A user can see friends sugesstions list" do
+  scenario "A user can see friends suggestions list" do
     visit '/signup'
     fill_in 'signup[username]', with: "Foo"
     fill_in 'signup[password]', with: "Bar"
@@ -12,7 +12,7 @@ RSpec.feature "see friends profile page", type: :feature do
     fill_in 'signin[username]', with: "Foo"
     fill_in 'signin[password]', with: "Bar"
     click_button "Signin"
-    click_button "Friends sugesstions"
+    click_link "Friends suggestions"
     expect(page).to have_content("Friend1")
   end
 end
