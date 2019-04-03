@@ -24,25 +24,8 @@ ActiveRecord::Schema.define(version: 20190403141827) do
     t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.string "caption_file_name"
-    t.string "caption_content_type"
-    t.integer "caption_file_size"
-    t.datetime "caption_updated_at"
     t.bigint "signup_id"
     t.index ["signup_id"], name: "index_posts_on_signup_id"
-  end
-
-  create_table "sign_ups", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "username"
-    t.string "email"
-    t.string "password"
-    t.string "password_confirm"
   end
 
   create_table "signups", force: :cascade do |t|
