@@ -19,7 +19,11 @@ RSpec.feature "see friends profile page", type: :feature do
     click_link "Friends suggestions"
     click_button "Add friend"
     expect(page).to have_content "Friend request sent"
+  end
 
+  scenario "user can see list of his/her friends" do
+    visit '/friends?id=1' #going to signup user 1's profile
+    expect(page).to have_content "Cauliflower" 
   end
 
 end

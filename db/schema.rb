@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190403141827) do
+ActiveRecord::Schema.define(version: 20190404110320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,34 @@ ActiveRecord::Schema.define(version: 20190403141827) do
   create_table "friends", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "receiver_id"
+    t.integer "sender_id"
+    t.index ["receiver_id"], name: "index_friends_on_receiver_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.string "caption_file_name"
+    t.string "caption_content_type"
+    t.integer "caption_file_size"
+    t.datetime "caption_updated_at"
     t.bigint "signup_id"
     t.index ["signup_id"], name: "index_posts_on_signup_id"
+  end
+
+  create_table "sign_ups", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "username"
+    t.string "email"
+    t.string "password"
+    t.string "password_confirm"
   end
 
   create_table "signups", force: :cascade do |t|
@@ -34,5 +54,6 @@ ActiveRecord::Schema.define(version: 20190403141827) do
     t.string "email"
   end
 
+  add_foreign_key "friends", "signups", column: "receiver_id"
   add_foreign_key "posts", "signups"
 end
