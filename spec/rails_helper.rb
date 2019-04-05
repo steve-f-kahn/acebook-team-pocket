@@ -40,11 +40,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.start
     Signup.create(:username => "bobby" , :password => "boblord95", :email => "bob@bobyd.bob")
+    Signup.create(:username => "Cauliflower" , :password => "veg", :email => "Cauliflower@veg.com")
     5.times {Post.create(:message => "A test message", :signup_id => 1)}
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
+    # DatabaseCleaner.clean
   end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
