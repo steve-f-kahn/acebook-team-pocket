@@ -19,6 +19,7 @@ class SigninController < ApplicationController
       session[:user] = @user
       session[:user_id] = @user.id
       session[:current_user] = @user
+
       redirect_to posts_url
     else
       render 'new'

@@ -25,6 +25,14 @@ require 'rspec/rails'
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+Capybara.register_driver :firefox_headless do |app|
+  options = ::Selenium::WebDriver::Firefox::Options.new
+  options.args << '--headless'
+
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
+end
+Capybara.javascript_driver = :firefox_headless
+
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -40,11 +48,14 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.start
     Signup.create(:username => "bobby" , :password => "boblord95", :email => "bob@bobyd.bob")
+    Signup.create(:username => "Cauliflower" , :password => "veg", :email => "cauliflower@veg.com")
+    Signup.create(:username => "Elizabeth", :password => "Regina", :email => "queen@uk.co.uk" )
+    Friend.create(:receiver_id => 1, :sender_id => 2)
     5.times {Post.create(:message => "A test message", :signup_id => 1)}
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
+    # DatabaseCleaner.clean
   end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
