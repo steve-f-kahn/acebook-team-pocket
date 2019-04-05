@@ -1,4 +1,9 @@
+<%= stylesheet_link_tag "posts" %>
+
 <body class = "post_page">
+  <form class="logout" action="/signout" method="get">
+    <input type="submit" id="logout" value="Logout" align="right">
+  </form>
 
  <% if !@user.nil? %>
 <h1> Hello, <%=@user['username']%></h1>
@@ -10,7 +15,8 @@
       <br>
      <% @users.each do |user| %>
      <% if user.id  == post.signup_id %>
-    <%= "#{user.username} : #{}" %>
+      <div class="username_name"><i><%= "#{user.username} : #{}" %></i></div>
+
     <% end %>
     <% end %>
       <div class="post_message">

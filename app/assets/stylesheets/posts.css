@@ -1,3 +1,22 @@
+#logout {
+  background-color: lightblue;
+  font-size: 15px;
+  margin-left:1250px;
+  width:98px;
+  height:42px;
+  border:2px;
+}
+
+#logout:hover {
+  background-color: yellow;
+}
+
+.username_name {
+  margin-left:5px;
+  font-size: 21px;
+  line-height: 45px;
+}
+
 .post_page {
   display: flex;
   flex-direction: column;
@@ -44,13 +63,16 @@
 }
 
 .new_post_link {
+
+  font-size: 25px;
   margin: 50px;
+
 }
 
 .time {
   text-align: right;
   margin-right: 15px;
-  font-size: 10pt;
+  font-size: 15pt;
 }
 
 .edit {
@@ -62,4 +84,9 @@
   margin-right: 10px;
   display: flex;
   justify-content: flex-end;
+
+}
+
+body {
+  background-color: lightpink;
 }
