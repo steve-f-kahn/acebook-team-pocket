@@ -31,6 +31,8 @@ Capybara.register_driver :firefox_headless do |app|
 
   Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
+Capybara.javascript_driver = :firefox_headless
+
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
