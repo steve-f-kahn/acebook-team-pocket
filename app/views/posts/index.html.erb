@@ -43,9 +43,26 @@
     <% end %>
   </div>
 
-  <div class="new_friends_link">
-    <%= link_to new_friend_path do %>
-    Friends suggestions
-    <% end %>
+  <div class="" id="dropdown">
+    <input type="text" id="search" name="" value="">
   </div>
-</body>
+
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript">
+    var search = document.getElementById("search")
+    search.addEventListener('change',function(){
+      $.get("/findfriends",{input: search.value},function(res){
+        res.forEach(function(row){
+          text = document.createTextNode(row.username)
+          div = document.createElement('a')
+          div.setAttribute('href','/friends?id='+ row.id)
+          div.append(text)
+          console.log(text)
+          document.getElementById("dropdown").append(div)
+          document.getElementById("dropdown").append(document.createElement('br'))
+        })
+      })
+    })
+  </script>
+
