@@ -9,7 +9,7 @@ end
   def create
     @user = Signup.find_by(username: params[:signin][:username])
     if @user && @user.authenticate(params[:signin][:password])
-      session[:user] == @user.id
+      session[:user] = @user
       redirect_to posts_url
     else
       render 'new'

@@ -1,29 +1,25 @@
 require 'rails_helper'
-
-RSpec.feature "see friends profile page", type: :feature do
-
-  scenario "A user can see friends suggestions list" do
-    visit '/signin/new'
-    fill_in 'signin[username]', with: "bobby"
-    fill_in 'signin[password]', with: "boblord95"
-    click_button "Signin"
-    click_link "Friends suggestions"
-    expect(page).to have_content("Friend1")
-  end
-
-  scenario "User can click to 'Add friend' button and see profile" do
-    visit '/signin/new'
-    fill_in 'signin[username]', with: "bobby"
-    fill_in 'signin[password]', with: "boblord95"
-    click_button "Signin"
-    click_link "Friends suggestions"
-    click_button "Add friend"
-    expect(page).to have_content "Friend request sent"
-  end
+RSpec.feature "see friends profile page", type: :feature, js: true do 
 
   scenario "user can see list of his/her friends" do
     visit '/friends?id=1' #going to signup user 1's profile
-    expect(page).to have_content "Cauliflower" 
+    expect(page).to have_content "Cauliflower"
   end
 
+
+    scenario "can add a friend and see ureself on the friend list" do
+    signin("Elizabeth", "Regina")
+    visit "/friends?id=1"
+    click_button "Add"
+    expect(page).to have_content "Elizabeth"
+
+  end
+
+
+end
+def signin(name, pass)
+  visit "/"
+  fill_in 'signin[username]', with: name
+  fill_in 'signin[password]', with: pass
+  click_button "Signin"
 end

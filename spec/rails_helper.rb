@@ -41,6 +41,7 @@ RSpec.configure do |config|
     DatabaseCleaner.start
     Signup.create(:username => "bobby" , :password => "boblord95", :email => "bob@bobyd.bob")
     Signup.create(:username => "Cauliflower" , :password => "veg", :email => "cauliflower@veg.com")
+    Signup.create(:username => "Elizabeth", :password => "Regina", :email => "queen@uk.co.uk" )
     Friend.create(:receiver_id => 1, :sender_id => 2)
     5.times {Post.create(:message => "A test message", :signup_id => 1)}
   end

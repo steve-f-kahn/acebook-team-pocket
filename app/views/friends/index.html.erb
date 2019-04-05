@@ -5,12 +5,30 @@
     <title></title>
   </head>
   <body>
+    <button id="Add" type="button" name="button">Add Friend</button>
     <div id="friend_div" class="">
       <ul id="friend_list">
         <% @friends.each do |friend| %>
+        <li>
         <%= friend.username %>
         <% end %>
+        </li>
       </ul>
     </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+      document.getElementById("Add").addEventListener('click', function(){
+        $.get('/addFriend',{id: window.location.href.split('=')[1]}, function(res){
+          if(res == "empty") {
+            return
+          } else {
+            text = document.createTextNode(res.username)
+            point = document.createElement("li")
+            point.append(text)
+            document.getElementById("friend_list").append(point)
+          }
+        })
+      })
+    </script>
   </body>
 </html>
