@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/friends/request', to: 'friends#request'
   get "/addFriend", to: 'friends#create'
 
+  get "/findfriends", to: "findfriends#index"
 
   get '/signup', to: 'signup#index'
   post '/signup', to: 'signup#create'
