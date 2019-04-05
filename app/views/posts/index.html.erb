@@ -7,9 +7,10 @@
   <div class="posts">
     <% @posts.each do |post| %>
     <div id="<%= "post#{post.id}" %>"class="post_container">
+      <br>
      <% @users.each do |user| %>
      <% if user.id  == post.signup_id %>
-    <%= "#{user.username} : #{post.message}" %>
+    <%= "#{user.username} : #{}" %>
     <% end %>
     <% end %>
       <div class="post_message">
@@ -41,6 +42,7 @@
     New post
     <% end %>
   </div>
+
   <div class="" id="dropdown">
     <input type="text" id="search" name="" value="">
   </div>
@@ -63,5 +65,4 @@
       })
     })
   </script>
-</body>
-<a href="#"></a>
+
